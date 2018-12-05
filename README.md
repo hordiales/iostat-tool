@@ -1,6 +1,41 @@
 # iostat-tool
 
-parse and visualize iostat output
+(fork) parse and visualize iostat output
+
+### Install:
+
+    $ git clone https://github.com/hordiales/iostat-tool
+    $ cd iostat-tool && python3 setup.py develop
+
+## Example step by step
+
+### Log generation:
+
+    $ iostat -yxmt 1 | tee my-iostat.log
+
+iostat options:
+
+      -y     Omit first report with statistics since system boot, if displaying multiple records at given interval.
+      -x     Display extended statistics.
+      -m     Display statistics in megabytes per second.
+      -t     Print the time for each report displayed. The timestamp format may depend on the value  of  the  S_TIME_FORMAT  environment variable (see below).
+
+
+log adjustment:
+
+    $ sed 's/,/./g' -i my-iostat.log # float values
+  	$ sed 's/Device/Device\:/g' -i my-iostat.log
+
+### Plot general CPU use vs I/O hard disk utilization (sda)
+
+  	$ iostat-cli --data my-iostat.log --disk sda --fig-output cpu-and-io-utilization.png plot --title "Global CPU and I/O utilization" --subplots %util 
+
+### All the iostat data
+
+  	$ iostat-cli --data my-iostat.log --disk sda --fig-output all-iostat.png plot --title "All"
+
+
+------------
 
 ## Requirements
 
