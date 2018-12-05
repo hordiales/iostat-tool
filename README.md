@@ -30,6 +30,8 @@ log adjustment:
 
   	$ iostat-cli --data my-iostat.log --disk sda --fig-output cpu-and-io-utilization.png plot --title "Global CPU and I/O utilization" --subplots %util 
 
+![](cpu-and-io-utilization.png)
+
 ### All the iostat data
 
   	$ iostat-cli --data my-iostat.log --disk sda --fig-output all-iostat.png plot --title "All"
