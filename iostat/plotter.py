@@ -77,6 +77,7 @@ class Plotter(Renderer):
         elif name == PERCENT_UTIL:
             subplot.set_title('%util')
             subplot.set_ylabel('percent')
+            subplot.set_ylim(0,100)
         elif name == AVGRQ_SZ:
             subplot.set_title('average size (in sectors) of the requests')
             subplot.set_ylabel('sectors')
